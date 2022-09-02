@@ -56,5 +56,14 @@ data = {}
 # print(content)
 
 # get请求 对参数转换为utf-8编码
-unicode_str = urllib.parse.quote('张健云')
-print(unicode_str)
+# unicode_str = urllib.parse.quote('张健云')
+# print(unicode_str)
+
+# get请求 urlencode 多参数转Unicode 将字典转为参数
+param = {
+    '&name': '周杰伦',
+    'music': '稻香',
+    'sex': '男'
+}
+mul_param = urllib.parse.urlencode(param)
+print(mul_param)
