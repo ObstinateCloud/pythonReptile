@@ -18,7 +18,7 @@ url = 'https://www.jd.com'
 # 4. 导入selenium
 from selenium import webdriver
 # 5.创建浏览器操作对象 选择刚才下载的驱动
-path = '../chromedriver.exe'
+path = 'chromedriver.exe'
 
 browser = webdriver.Chrome(path)
 
