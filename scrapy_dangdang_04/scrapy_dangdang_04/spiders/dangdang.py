@@ -7,6 +7,9 @@ class DangdangSpider(scrapy.Spider):
     allowed_domains = ['bang.dangdang.com']
     start_urls = ['http://bang.dangdang.com/books/bestsellers/01.00.00.00.00.00-recent30-0-0-1-1']
 
+    base_url = 'http://bang.dangdang.com/books/bestsellers/01.00.00.00.00.00-recent30-0-0-1-'
+    page = 1
+
     def parse(self, response):
         print('当当网')
         # content = response.text
@@ -27,8 +30,13 @@ class DangdangSpider(scrapy.Spider):
             price = li.xpath('./div[@class="price"]/p/span[@class="price_n"]/text()').extract_first()
             # print(name, price, img_src)
             book = ScrapyDangdang04Item(img_src=img_src, name=name, price=price)
-        # 2.使用piplines下载
+            # 2.使用piplines下载
             # 将book对象交给管道
             yield book
+        # 一次请求处理完后
+        if self.page < 4:
+            self.page = self.page + 1
+            url = self.base_url + str(self.page)
+            yield scrapy.Request(url=url, callback=self.parse)
 
         pass
