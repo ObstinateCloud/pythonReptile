@@ -64,6 +64,7 @@ ROBOTSTXT_OBEY = False
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'scrapy_crawlspider_06.pipelines.ScrapyCrawlspider06Pipeline': 300,
+   'scrapy_crawlspider_06.pipelines.MysqlPipeline': 301,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -86,3 +87,17 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+# 数据库连接
+DB_HOST = '127.0.0.1'
+DB_PORT = 3306
+DB_NAME = 'py_spider'
+DB_USER = 'root'
+DB_PASSWORD = 'zjy123'
+# 此处不允许写-
+DB_CHARSET = 'utf8'
+
+# 指定日志级别 'CRITICAL' 'ERROR' 'WARNING'  ‘INFO’ 'DEBUG'
+# LOG_LEVEL = 'WARNING'
+# 指定日志文件
+# LOG_FILE = 'crawlspider.log'

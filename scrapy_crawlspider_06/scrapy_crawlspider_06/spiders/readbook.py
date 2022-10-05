@@ -14,8 +14,9 @@ class ReadbookSpider(CrawlSpider):
     #     Rule(LinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
     # )
 
+    # follow 是否跟进一直到爬完为止
     rules = (
-        Rule(LinkExtractor(allow=r'/book/1175_\d+\.html'), callback='parse_item', follow=False),
+        Rule(LinkExtractor(allow=r'/book/1175_\d+\.html'), callback='parse_item', follow=True),
     )
 
     def parse_item(self, response):
